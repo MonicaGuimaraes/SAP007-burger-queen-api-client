@@ -1,9 +1,6 @@
-import styles from './ButtonSubmit.module.css'
-
-export default function ButtonSubmit({children, disabled}) {
-  return ( 
-    <> 
-      <button className={styles.buttonSubmit} type='submit' disabled={disabled}>{children}</button>
-    </>
-  )
+import styles from './buttons.module.css'
+export default function Buttons({disabled, children, onClick, type}){
+   return(
+      <button disabled={disabled} onClick={onClick} type={type} className={styles.Buttons}>{children}</button>
+   )
 }

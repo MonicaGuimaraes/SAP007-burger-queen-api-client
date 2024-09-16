@@ -1,6 +1,6 @@
 @import '../../reset.css';
 
-.buttonNav{
+.Buttons{
   border-radius: 5px;
   box-shadow: 0 0 1em var(--gradient-color1);
   color: var(--color1);

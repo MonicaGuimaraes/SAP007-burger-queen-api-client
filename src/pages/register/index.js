@@ -1,5 +1,5 @@
 import Inputs from '../../components/inputs'
-import ButtonSubmit from '../../components/buttons'
+import Buttons from '../../components/buttons'
 import { useState } from 'react'
 import { registerAPI } from '../../API/RegisterAPI'
 import HandlingApiStatus from '../../components/handlingApiStatus'
@@ -84,7 +84,7 @@ export default function Register(){
             <option value='cozinha'>Cozinha</option>
           </select>
         </label>
-        <ButtonSubmit disabled={!REGEX_EMAIL.test(email) || password.length < minPwdLength || name.length < minNameLength || role == null } >{'Cadastrar'}</ButtonSubmit>
+        <Buttons type='submit' disabled={!REGEX_EMAIL.test(email) || password.length < minPwdLength || name.length < minNameLength || role == null } >{'Cadastrar'}</Buttons>
         <p className={styles.register}>Tem uma conta? <Link className={styles.link} to="/">Vá para o Login</Link></p>
       </form>
       { navigate ? <Navigate to="/" /> : null }

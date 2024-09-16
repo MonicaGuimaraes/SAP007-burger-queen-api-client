@@ -1,9 +1,9 @@
 import logo from '../../assets/Logo.svg'
-import ButtonNav from '../../components/buttonsNavigate'
+import Buttons from '../../components/buttons'
 import styles from './Home.module.css'
 import { logoutUser, getPersistedUser } from '../../components/localStorage'
 import { useNavigate } from 'react-router-dom'
-import CarouselComponente from '../../components/Carrossel'
+import CarouselComponente from '../../components/carrossel'
 
 export default function Home(){
   const navigateTo = useNavigate()
@@ -24,11 +24,11 @@ export default function Home(){
       <nav>
         {!isUserAChef? 
         <> 
-          <ButtonNav disable={isUserAChef} onClick={() => navigateTo('/Menu') }>{'Cardápio e Carrinho'}</ButtonNav>
-          <ButtonNav disable={isUserAChef} onClick={() => navigateTo('/order')}>{'Serviço'}</ButtonNav>
-          <ButtonNav disable={isUserAChef} onClick={() => navigateTo('/finalized')}>{'Entregue'}</ButtonNav>    
-        </> : <ButtonNav onClick={() => navigateTo('/order') }>{'Pedidos'}</ButtonNav>  }
-        <button className={styles.buttonLogout} onClick={logoutUserNav}>{'Sair'}</button> 
+          <Buttons disable={isUserAChef} type='false' onClick={() => navigateTo('/Menu') }>{'Cardápio e Carrinho'}</Buttons>
+          <Buttons disable={isUserAChef} type='false' onClick={() => navigateTo('/order')}>{'Serviço'}</Buttons>
+          <Buttons disable={isUserAChef} type='false' onClick={() => navigateTo('/finalized')}>{'Entregue'}</Buttons>    
+        </> : <Buttons onClick={() => navigateTo('/order') }>{'Pedidos'}</Buttons>  }
+        <button type='false' className={styles.buttonLogout} onClick={logoutUserNav}>{'Sair'}</button> 
       </nav>
     </section>
   )

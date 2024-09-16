@@ -1,5 +1,5 @@
 import Inputs from '../../components/inputs'
-import ButtonSubmit from '../../components/buttons'
+import Buttons from '../../components/buttons'
 import { loginAPI } from '../../API/LoginAPI'
 import { useState } from "react"
 import HandlingApiStatus from '../../components/handlingApiStatus'
@@ -73,7 +73,7 @@ export default function Login(){
           onChange={(e) => setEmail(e.target.value)}
           />
         <Inputs type='password' placeholder='Senha' autoComplete='current-password' required value={password} onChange={(e) => setPassword(e.target.value)} />
-        <ButtonSubmit disabled={!REGEX_EMAIL.test(email) || password.length < minPwdLength}>{'Entrar'}</ButtonSubmit>
+        <Buttons type='submit' disabled={!REGEX_EMAIL.test(email) || password.length < minPwdLength}>{'Entrar'}</Buttons>
         <p className={styles.register}>Não tem uma conta? <Link className={styles.link} to="/register">Cadastre-se</Link></p>
       </form>
     </section>       

@@ -1,12 +1,12 @@
 import Vector from '../../assets/Vector.svg'
 import Inputs from '../inputs'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Cart.module.css'
 import ProductsCart from '../productsCart'
 import { createOrderAPI } from '../../API/CreateOrder'
 import { deleteItemFromCart, removeProductFromCart, addProductToCart, sumTotalPrice } from '../functions/changesOnCart'
 import HandlingApiStatus from '../handlingApiStatus'
-import closeAndOpen from '../../components/functions/closeAndOpen'
+
 
 export default function Cart({arrList, setArrList}) {
   const [name, setName] = useState('')
@@ -14,7 +14,11 @@ export default function Cart({arrList, setArrList}) {
   const [table, setTable] = useState(1)
   const [responseAPI, setResponseAPI] = useState('')
   const [showElement, setShowElement] = useState(false)
-  const classOpenCart = useRef(null)
+  const [classButton, setClassButton] = useState("false")
+ 
+  function closeAndOpen(){
+    setClassButton(!classButton)
+  }
 
   useEffect(()=>{ 
     setTotal(sumTotalPrice(arrList))
@@ -76,13 +80,13 @@ export default function Cart({arrList, setArrList}) {
 
   return (
   <> 
-    <section ref={classOpenCart} 
-    className={styles.sectionClosed}> 
+    <section 
+    className={classButton ? styles.sectionClosed : styles.sectionOpen}> 
     {showElement ? <HandlingApiStatus message={responseAPI}/> : null}
       <div className={styles.DivbuttonOpenAndClosed}>
         <button 
         className={styles.buttonOpenAndClosed} 
-        onClick={()=> closeAndOpen(classOpenCart, styles.sectionOpen)}>
+        onClick={closeAndOpen}>
           <img 
           className={styles.ImgOpenAndClosed} 
           src={Vector} 
